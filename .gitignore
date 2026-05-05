@@ -1,0 +1,11 @@
+# Ignorar archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar configuraciones de editores de código
+.vscode/
+.idea/
+
+# Ignorar las fotos de facturas que suban de prueba
+assets/uploads/*
+!assets/uploads/.gitkeep
