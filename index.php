@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" style="padding: 10px 20px; background-color: #0056b3; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%;">Ingresar</button>
         </form>
         
-        <p style="font-size: 12px; color: #666; margin-top: 15px;">Prueba con admin / 123456</p>
+        <p style="font-size: 12px; color: #666; margin-top: 15px;">Prueba con admin / password</p>
     </div>
 
 </body>
