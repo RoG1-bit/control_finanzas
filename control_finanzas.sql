@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2026 a las 07:54:31
+-- Tiempo de generación: 07-05-2026 a las 05:44:39
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `entradas` (
   `id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
   `tipo` varchar(100) NOT NULL,
   `monto` decimal(10,2) NOT NULL,
   `fecha` date NOT NULL,
@@ -43,6 +44,7 @@ CREATE TABLE `entradas` (
 
 CREATE TABLE `salidas` (
   `id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
   `tipo` varchar(100) NOT NULL,
   `monto` decimal(10,2) NOT NULL,
   `fecha` date NOT NULL,
@@ -76,13 +78,15 @@ INSERT INTO `usuarios` (`id`, `usuario`, `password`) VALUES
 -- Indices de la tabla `entradas`
 --
 ALTER TABLE `entradas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_entradas_usuarios` (`usuario_id`);
 
 --
 -- Indices de la tabla `salidas`
 --
 ALTER TABLE `salidas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_salidas_usuarios` (`usuario_id`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -112,6 +116,22 @@ ALTER TABLE `salidas`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `entradas`
+--
+ALTER TABLE `entradas`
+  ADD CONSTRAINT `fk_entradas_usuarios` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `salidas`
+--
+ALTER TABLE `salidas`
+  ADD CONSTRAINT `fk_salidas_usuarios` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
