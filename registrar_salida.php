@@ -1,32 +1,132 @@
 <?php
 session_start();
-// Verifica la sesión como en el código de Iván
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php");
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Regissssstrar Salida</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Registrar Salida</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background:#eef2f7;
+            margin:0;
+            padding:30px;
+        }
+
+        .contenedor{
+            max-width:600px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2{
+            text-align:center;
+            color:#e74c3c;
+            margin-bottom:25px;
+        }
+
+        label{
+            display:block;
+            margin-top:15px;
+            margin-bottom:8px;
+            font-weight:bold;
+            color:#2c3e50;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            box-sizing:border-box;
+        }
+
+        input:focus{
+            outline:none;
+            border-color:#e74c3c;
+        }
+
+        button{
+            width:100%;
+            background:#e74c3c;
+            color:white;
+            border:none;
+            padding:15px;
+            margin-top:25px;
+            border-radius:10px;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#c0392b;
+        }
+
+        .volver{
+            display:inline-block;
+            margin-top:20px;
+            text-decoration:none;
+            background:#34495e;
+            color:white;
+            padding:12px 18px;
+            border-radius:8px;
+            transition:0.3s;
+        }
+
+        .volver:hover{
+            background:#2c3e50;
+        }
+
+    </style>
+
 </head>
-<body style="font-family: Arial; background-color: #f4f4f9; padding: 20px;">
-<div style="max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <h2>Registrar Salida</h2>
+
+<body>
+
+<div class="contenedor">
+
+    <h2> Registrar Salida</h2>
+
     <form action="procesar_salida.php" method="POST" enctype="multipart/form-data">
-        <label>Tipo de salida:</label>
-        <input type="text" name="tipo" style="width: 100%; margin-bottom: 15px;" required>
 
-        <label>Monto ($):</label>
-        <input type="number" step="0.01" name="monto" style="width: 100%; margin-bottom: 15px;" required>
+        <label>Tipo de salida</label>
+        <input type="text" name="tipo" required>
 
-        <label>Fecha:</label>
-        <input type="date" name="fecha" style="width: 100%; margin-bottom: 15px;" required>
+        <label>Monto ($)</label>
+        <input type="number" step="0.01" name="monto" required>
 
-        <label>Factura (foto):</label>
-        <input type="file" name="factura" accept="image/*" style="width: 100%; margin-bottom: 15px;" required>
+        <label>Fecha</label>
+        <input type="date" name="fecha" required>
 
-        <button type="submit" style="background: #e74c3c; color: white; padding: 10px; width: 100%; border: none; cursor: pointer;">Guardar Salida</button>
+        <label>Factura (foto)</label>
+        <input type="file" name="factura" accept="image/*" required>
+
+        <button type="submit">
+            Guardar Salida
+        </button>
+
     </form>
+
+    <a href="dashboard.php" class="volver">
+        ← Volver al Dashboard
+    </a>
+
 </div>
+
 </body>
 </html>

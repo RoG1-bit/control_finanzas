@@ -16,6 +16,20 @@ $entradas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         /* Ajustamos el tamaño para que se vea mejor la miniatura */
         .foto { width: 60px; height: auto; border-radius: 4px; cursor: pointer; border: 1px solid #ccc; }
         .foto:hover { opacity: 0.8; }
+        .volver{
+            display:inline-block;
+            margin-top:20px;
+            text-decoration:none;
+            background:#34495e;
+            color:white;
+            padding:12px 18px;
+            border-radius:8px;
+            transition:0.3s;
+        }
+
+        .volver:hover{
+            background:#2c3e50;
+        }
     </style>
 </head>
 <body style="padding: 20px; font-family: Arial;">
@@ -41,6 +55,8 @@ $entradas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </tr>
         <?php endforeach; ?>
     </table>
-    <br><a href="dashboard.php" style="text-decoration: none; color: #007bff; font-weight: bold;">← Volver al Dashboard</a>
+      <a href="dashboard.php" class="volver">
+        ← Volver al Dashboard
+    </a>
 </body>
 </html>

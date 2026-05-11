@@ -36,7 +36,6 @@ if (isset($_GET['logout'])) {
 
         <p style="color: #555; font-size: 16px;">Selecciona una opción del menú administrativo:</p>
 
-        <!-- 5 Opciones de Menú (Apegado a la rúbrica) -->
         <!-- Archivos HREF creados solo de prueba  -->
         <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
             <a href="registrar_entrada.php" style="display: block; padding: 15px; background: #e9ecef; text-decoration: none; color: #333; border-radius: 5px; font-weight: bold; border-left: 5px solid #28a745;">1. Registrar entrada</a>
